@@ -9,5 +9,3 @@ public class Main {
         SpringApplication.run(Main.class, args);
     }
 }
-
-/* Специальный комментарий, чтобы можно было закоммитить этот файл. */
