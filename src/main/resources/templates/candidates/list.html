@@ -10,13 +10,17 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Имя</th>
-                <th scope="col">Дата создания</th>
+                <th scope="col">Дата добавления в базу</th>
             </tr>
             </thead>
             <tbody>
             <tr th:each="candidate: ${candidates}">
                 <td th:text="${candidate.id}" />
-                <td th:text="${candidate.name}" />
+                <td>
+                    <a th:text="${candidate.name}"
+                       th:href="@{/candidates/{candidateId}(candidateId=${candidate.id})}">
+                    </a>
+                </td>
                 <!-- Чтобы дата выводилась в "красивом" формате нужно добавить ещё одни скобки -->
                 <td th:text="${{candidate.creationDate}}" />
             </tr>
