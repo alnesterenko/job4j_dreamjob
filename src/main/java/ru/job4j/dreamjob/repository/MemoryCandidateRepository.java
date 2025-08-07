@@ -11,8 +11,6 @@ import java.util.Optional;
 @Repository
 public class MemoryCandidateRepository implements CandidateRepository {
 
-    private static final MemoryCandidateRepository INSTANCE = new MemoryCandidateRepository();
-
     private int nextId = 1;
 
     private final Map<Integer, Candidate> candidates = new HashMap<>();
@@ -24,10 +22,6 @@ public class MemoryCandidateRepository implements CandidateRepository {
         save(new Candidate(0, "Порвал Баянов", "Весёлый балагур-затейник."));
         save(new Candidate(0, "Запой Гусаров", "Алкаш. Антисанитарная внешность."));
         save(new Candidate(0, "Сачок Моллюсков", "\"В прошлом был достойным человеком.\""));
-    }
-
-    public static MemoryCandidateRepository getInstance() {
-        return INSTANCE;
     }
 
     @Override
