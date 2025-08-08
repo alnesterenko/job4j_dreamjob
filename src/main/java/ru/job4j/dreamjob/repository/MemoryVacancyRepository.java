@@ -19,13 +19,13 @@ public class MemoryVacancyRepository implements VacancyRepository {
     private final Map<Integer, Vacancy> vacancies = new ConcurrentHashMap<>();
 
     private MemoryVacancyRepository() {
-        save(new Vacancy(0, "Vibe Java Developer", "Считает себя программистом. Но без ИИ не может написать даже \"Hello World!\"."));
-        save(new Vacancy(0, "Intern Java Developer", "Имеет только базовые понятия языка, но есть ОГРОМНОЕ желание учиться."));
-        save(new Vacancy(0, "Junior Java Developer", "Что-то где-то знает."));
-        save(new Vacancy(0, "Junior+ Java Developer", "Может что-то написать, но за ним нужен постоянный контроль."));
-        save(new Vacancy(0, "Middle Java Developer", "Уже опытный разработчик. Контроль не требуется."));
-        save(new Vacancy(0, "Middle+ Java Developer", "\"Мотёрый волк\". Может спорить с синьёром."));
-        save(new Vacancy(0, "Senior Java Developer", "\"Король, царь и Бог\"."));
+        save(new Vacancy(0, "Vibe Java Developer", "Считает себя программистом. Но без ИИ не может написать даже \"Hello World!\".", true));
+        save(new Vacancy(0, "Intern Java Developer", "Имеет только базовые понятия языка, но есть ОГРОМНОЕ желание учиться.", false));
+        save(new Vacancy(0, "Junior Java Developer", "Что-то где-то знает.", true));
+        save(new Vacancy(0, "Junior+ Java Developer", "Может что-то написать, но за ним нужен постоянный контроль.", false));
+        save(new Vacancy(0, "Middle Java Developer", "Уже опытный разработчик. Контроль не требуется.", true));
+        save(new Vacancy(0, "Middle+ Java Developer", "\"Мотёрый волк\". Может спорить с синьёром.", false));
+        save(new Vacancy(0, "Senior Java Developer", "\"Король, царь и Бог\".", true));
     }
 
     @Override
@@ -43,7 +43,7 @@ public class MemoryVacancyRepository implements VacancyRepository {
     @Override
     public boolean update(Vacancy vacancy) {
         return vacancies.computeIfPresent(vacancy.getId(),
-                (id, oldVacancy) -> new Vacancy(oldVacancy.getId(), vacancy.getTitle(), vacancy.getDescription())) != null;
+                (id, oldVacancy) -> new Vacancy(oldVacancy.getId(), vacancy.getTitle(), vacancy.getDescription(), vacancy.getVisible())) != null;
     }
 
     @Override

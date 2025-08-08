@@ -8,6 +8,7 @@
         <table class="table">
             <thead>
             <tr>
+                <th><i class="bi bi-square"></i></th>
                 <th scope="col">#</th>
                 <th scope="col">Имя</th>
                 <th scope="col">Дата создания</th>
@@ -15,14 +16,23 @@
             </thead>
             <tbody>
             <tr th:each="vacancy: ${vacancies}">
-                <td th:text="${vacancy.id}" />
+                <td>
+                    <!-- Аналог if-else -->
+              <span th:if="${vacancy.visible}">
+                <i class="bi bi-check-square"></i>
+              </span>
+                    <span th:if="${!vacancy.visible}">
+                  <i class="bi bi-square"></i>
+              </span>
+                </td>
+                <td th:text="${vacancy.id}"/>
                 <td>
                     <a th:text="${vacancy.title}"
                        th:href="@{/vacancies/{vacancyId}(vacancyId=${vacancy.id})}">
                     </a>
                 </td>
                 <!-- Чтобы дата выводилась в "красивом" формате нужно добавить ещё одни скобки -->
-                <td th:text="${{vacancy.creationDate}}" />
+                <td th:text="${{vacancy.creationDate}}"/>
             </tr>
             </tbody>
         </table>
