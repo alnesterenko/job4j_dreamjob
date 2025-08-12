@@ -19,12 +19,12 @@ public class MemoryCandidateRepository implements CandidateRepository {
     private final Map<Integer, Candidate> candidates = new ConcurrentHashMap<>();
 
     public MemoryCandidateRepository() {
-        save(new Candidate(0, "Олег Петров", "Нормальный среднестатистический чел.", 6));
-        save(new Candidate(0, "Карман Пистонов", "Фриковатый тип. Возможно наркоман.", 1));
-        save(new Candidate(0, "Разгул Гормонов", "Неадекватный быковатый тип.", 1));
-        save(new Candidate(0, "Порвал Баянов", "Весёлый балагур-затейник.", 3));
-        save(new Candidate(0, "Запой Гусаров", "Алкаш. Антисанитарная внешность.", 1));
-        save(new Candidate(0, "Сачок Моллюсков", "\"В прошлом был достойным человеком.\"", 2));
+        save(new Candidate(0, "Олег Петров", "Нормальный среднестатистический чел.", 6, 0));
+        save(new Candidate(0, "Карман Пистонов", "Фриковатый тип. Возможно наркоман.", 1, 0));
+        save(new Candidate(0, "Разгул Гормонов", "Неадекватный быковатый тип.", 1, 0));
+        save(new Candidate(0, "Порвал Баянов", "Весёлый балагур-затейник.", 3, 0));
+        save(new Candidate(0, "Запой Гусаров", "Алкаш. Антисанитарная внешность.", 1, 0));
+        save(new Candidate(0, "Сачок Моллюсков", "\"В прошлом был достойным человеком.\"", 2, 0));
     }
 
     @Override
@@ -42,7 +42,12 @@ public class MemoryCandidateRepository implements CandidateRepository {
     @Override
     public boolean update(Candidate candidate) {
         return candidates.computeIfPresent(candidate.getId(),
-                (id, oldCandidate) -> new Candidate(oldCandidate.getId(), candidate.getName(), candidate.getDescription(), candidate.getCityId())) != null;
+                (id, oldCandidate) -> new Candidate(
+                        oldCandidate.getId(),
+                        candidate.getName(),
+                        candidate.getDescription(),
+                        candidate.getCityId(),
+                        candidate.getFileId())) != null;
     }
 
     @Override
