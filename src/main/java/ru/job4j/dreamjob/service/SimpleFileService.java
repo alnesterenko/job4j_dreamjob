@@ -22,9 +22,9 @@ public class SimpleFileService implements FileService {
     /* @Value("${file.directory}") String storageDirectory.
      Эта строка позволяет подставить на место storageDirectory
       значение из файла application.properties с ключом file.directory; */
-    public SimpleFileService(FileRepository fileRepository,
+    public SimpleFileService(FileRepository sql2oFileRepository,
                              @Value("${file.directory}") String storageDirectory) {
-        this.fileRepository = fileRepository;
+        this.fileRepository = sql2oFileRepository;
         this.storageDirectory = storageDirectory;
         createStorageDirectory(storageDirectory);
     }
