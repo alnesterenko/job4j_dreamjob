@@ -42,6 +42,17 @@ public class Vacancy {
         this.fileId = fileId;
     }
 
+    /* Ради тестов пришлось добавить "полный" конструктор(с creationDate)  */
+    public Vacancy(int id, String title, String description, LocalDateTime creationDate, boolean visible, int cityId, int fileId) {
+        this.id = id;
+        this.title = title;
+        this.description = description;
+        this.creationDate = creationDate;
+        this.visible = visible;
+        this.cityId = cityId;
+        this.fileId = fileId;
+    }
+
     public Vacancy() {
     }
 

@@ -35,6 +35,16 @@ public class Candidate {
         this.fileId = fileId;
     }
 
+    /* Ради тестов пришлось добавить "полный" конструктор(с creationDate)  */
+    public Candidate(int id, String name, String description, LocalDateTime creationDate, int cityId, int fileId) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.creationDate = creationDate;
+        this.cityId = cityId;
+        this.fileId = fileId;
+    }
+
     public Candidate() {
     }
 
