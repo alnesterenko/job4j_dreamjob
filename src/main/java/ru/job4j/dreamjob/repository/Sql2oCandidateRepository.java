@@ -3,10 +3,8 @@ package ru.job4j.dreamjob.repository;
 import org.springframework.stereotype.Repository;
 import org.sql2o.Sql2o;
 import ru.job4j.dreamjob.model.Candidate;
-import ru.job4j.dreamjob.model.Vacancy;
 
 import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 @Repository
