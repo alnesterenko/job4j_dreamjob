@@ -78,13 +78,4 @@ public class User {
     public int hashCode() {
         return Objects.hash(getId(), getEmail());
     }
-
-    public static User checkGuestOrNot(HttpSession session) {
-        var user = (User) session.getAttribute("user");
-        if (user == null) {
-            user = new User();
-            user.setName("Гость");
-        }
-        return user;
-    }
 }
