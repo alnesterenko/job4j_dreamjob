@@ -1,5 +1,7 @@
 package ru.job4j.dreamjob.model;
 
+import jakarta.servlet.http.HttpSession;
+
 import java.util.Objects;
 
 public class User {
@@ -75,5 +77,14 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(getId(), getEmail());
+    }
+
+    public static User checkGuestOrNot(HttpSession session) {
+        var user = (User) session.getAttribute("user");
+        if (user == null) {
+            user = new User();
+            user.setName("Гость");
+        }
+        return user;
     }
 }
